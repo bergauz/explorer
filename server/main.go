@@ -129,6 +129,7 @@ func main() {
 			r.Get("/{address}/transactions", getAddressTransactions)
 			r.Get("/{address}/holders", getTokenHolders)
 			r.Get("/{address}/internal_transactions", getInternalTransactions)
+			r.Get("/{address}/contract", getContract)
 		})
 		r.Route("/api/transaction", func(r chi.Router) {
 			r.Get("/{hash}", getTransaction)
@@ -249,6 +250,12 @@ func getInternalTransactions(w http.ResponseWriter, r *http.Request) {
 	}
 	internalTransactions.Transactions = backendInstance.GetInternalTransactionsList(contractAddress, skip, limit)
 	writeJSON(w, http.StatusOK, internalTransactions)
+}
+
+func getContract(w http.ResponseWriter, r *http.Request) {
+	contractAddress := chi.URLParam(r, "address")
+	holder := backendInstance.GetContract(contractAddress)
+	writeJSON(w, http.StatusOK, holder)
 }
 
 func getListBlocks(w http.ResponseWriter, r *http.Request) {

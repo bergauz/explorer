@@ -330,6 +330,19 @@ func (self *MongoBackend) importInternalTransaction(contractAddress string, tran
 	return internalTransaction
 }
 
+func (self *MongoBackend) importContract(contractAddress string, code string) *models.Contract {
+	contract := &models.Contract{
+		Address: contractAddress,
+		Code:    code,
+	}
+	_, err := self.mongo.C("Contracts").Upsert(bson.M{"contract_address": contract.Address, "code": contract.Code}, contract)
+	if err != nil {
+		log.Fatal().Err(err).Msg("importContract")
+	}
+
+	return contract
+}
+
 func (self *MongoBackend) getBlockByNumber(blockNumber int64) *models.Block {
 	var c models.Block
 	err := self.mongo.C("Blocks").Find(bson.M{"number": blockNumber}).Select(bson.M{"transactions": 0}).One(&c)
@@ -473,17 +486,17 @@ func (self *MongoBackend) getStats() *models.Stats {
 		log.Debug().Err(err).Msg("GetStats num of Total Transactions")
 	}
 	numOfLastWeekTransactions, err := self.mongo.C("Transactions").Find(bson.M{"created_at": bson.M{"$gte": time.Now().AddDate(0, 0, -7)}}).Count()
-	if err !=nil {
+	if err != nil {
 		log.Debug().Err(err).Msg("GetStats num of Last week Transactions")
 	}
 	numOf24HoursTransactions, err := self.mongo.C("Transactions").Find(bson.M{"created_at": bson.M{"$gte": time.Now().AddDate(0, 0, -1)}}).Count()
-	if err !=nil {
+	if err != nil {
 		log.Debug().Err(err).Msg("GetStats num of 24H Transactions")
 	}
 	return &models.Stats{
 		// NumberOfBlocks: int64(numOfBlocks),
-		NumberOfTotalTransactions: int64(numOfTotalTransactions),
+		NumberOfTotalTransactions:    int64(numOfTotalTransactions),
 		NumberOfLastWeekTransactions: int64(numOfLastWeekTransactions),
-		NumberOf24HoursTransactions: int64(numOf24HoursTransactions),
+		NumberOf24HoursTransactions:  int64(numOf24HoursTransactions),
 	}
 }

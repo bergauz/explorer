@@ -128,3 +128,6 @@ func (self *Backend) ImportTokenHolder(contractAddress, tokenHolderAddress strin
 func (self *Backend) ImportInternalTransaction(contractAddress string, transferEvent TransferEvent) *models.InternalTransaction {
 	return self.mongo.importInternalTransaction(contractAddress, transferEvent)
 }
+func (self *Backend) ImportContract(contractAddress string, code string) *models.Contract {
+	return self.mongo.importContract(contractAddress, code)
+}

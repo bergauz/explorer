@@ -217,6 +217,8 @@ func updateAddresses(url string, updateContracts bool, importer *backend.Backend
 			contract := false
 			if contractData != "" {
 				contract = true
+				// contractByteCode := contractDataArray[:1]
+				importer.ImportContract(normalizedAddress, contractData)
 				if updateContracts {
 					internalTxs := importer.GetInternalTransactions(normalizedAddress)
 					for _, itx := range internalTxs {
