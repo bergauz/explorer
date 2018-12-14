@@ -1,6 +1,7 @@
 <ng-progress></ng-progress>
 <app-toastr></app-toastr>
 <app-header *ifViewportSize="['large']"></app-header>
+<app-pwa-banner *ifViewportSize="['large']"></app-pwa-banner>
 <app-mobile-header *ifViewportSize="['small']"></app-mobile-header>
 <app-mobile-menu *ifViewportSize="['small']"></app-mobile-menu>
 <div class="app-container" [ngClass]="{'app-container--loading': isPageLoading}">

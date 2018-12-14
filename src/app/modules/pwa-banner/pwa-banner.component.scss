@@ -1,0 +1,55 @@
+.pwa-banner {
+  padding: 10px;
+  transform: translateX(110%);
+  transition: .5s;
+  background: #fff;
+
+  span {
+    svg {
+      vertical-align: unset;
+      width: 80px;
+      margin-left: 4px;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    a {
+      display: block;
+      width: 70px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background: #06a5ff;
+    }
+  }
+
+  &__wrapper {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 100;
+    width: 280px;
+    padding-top: 1px;
+    overflow: hidden;
+  }
+}
+
+
+.show-banner {
+  transform: translateX(0);
+}
+
+:host-context(body.dark) {
+
+  .pwa-banner {
+    background: #32274f;
+
+    a {
+      background: #7500f5;
+    }
+  }
+}

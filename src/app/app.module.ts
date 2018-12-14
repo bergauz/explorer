@@ -5,6 +5,8 @@ import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 /*COMPONENTS*/
 import {AppComponent} from './app.component';
 import {BlockComponent} from './scenes/block/block.component';
@@ -36,6 +38,7 @@ import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {SliderModule} from './modules/slider/slider.module';
 import {ToastrModule} from './modules/toastr/toastr.module';
+import {PwaBannerModule} from './modules/pwa-banner/pwa-banner.module';
 /*PIPES*/
 import {TimeAgoPipe} from 'time-ago-pipe';
 /*UTILS*/
@@ -76,6 +79,7 @@ import {VIEWPORT_SIZES} from './modules/viewport-size/contants';
     ViewportSizeModule.forRoot(VIEWPORT_SIZES),
     TabsModule,
     SliderModule,
+    PwaBannerModule,
     NgProgressModule.forRoot({
       trickleSpeed: 200,
       min: 20,
@@ -84,6 +88,7 @@ import {VIEWPORT_SIZES} from './modules/viewport-size/contants';
     }),
     NgProgressHttpModule.forRoot(),
     ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
