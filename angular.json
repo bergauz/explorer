@@ -5,7 +5,7 @@
   "projects": {
     "explorer": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": ".",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -23,7 +23,8 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
-              }
+              },
+              "manifest.json"
             ],
             "styles": [
               "src/assets/styles/theme.scss",
@@ -47,7 +48,8 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "serviceWorker": true
             }
           }
         },
@@ -81,7 +83,8 @@
             ],
             "scripts": [],
             "assets": [
-              "src/assets"
+              "src/assets",
+              "manifest.json"
             ]
           }
         },
