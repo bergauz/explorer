@@ -1,14 +1,19 @@
+@import "../../../assets/styles/themes/themes-switch";
+
+$btn-bg: var(--btn);
+$pwa-bg: var(--main);
+
 .pwa-banner {
   padding: 10px;
   transform: translateX(110%);
   transition: .5s;
-  background: #fff;
+  background: $pwa-bg;
 
   span {
     svg {
-      vertical-align: unset;
       width: 80px;
       margin-left: 4px;
+      vertical-align: middle;
     }
   }
 
@@ -20,10 +25,12 @@
     a {
       display: block;
       width: 70px;
+      padding: 5px 0;
       text-align: center;
       text-decoration: none;
       color: #fff;
-      background: #06a5ff;
+      background: $btn-bg;
+      cursor: pointer;
     }
   }
 
@@ -31,25 +38,13 @@
     position: fixed;
     top: 70px;
     right: 0;
-    z-index: 100;
+    z-index: 3;
     width: 280px;
     padding-top: 1px;
     overflow: hidden;
   }
 }
 
-
 .show-banner {
   transform: translateX(0);
-}
-
-:host-context(body.dark) {
-
-  .pwa-banner {
-    background: #32274f;
-
-    a {
-      background: #7500f5;
-    }
-  }
 }

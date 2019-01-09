@@ -25,10 +25,10 @@ export class LayoutService {
       this.themeSettings = THEME_SETTINGS;
     }
     this.themeColor = new BehaviorSubject<string>(this.themeSettings.color);
-
-    this.themeColor.subscribe(value => {
-      document.body.classList.remove('dark', 'light');
-      document.body.classList.add(value);
+    const target = document.body;
+    this.themeColor.subscribe((value: string) => {
+      target.classList.remove('dark', 'light');
+      target.classList.add(value);
       this.themeSettings.color = value;
       localStorage.setItem('THEME_SETTINGS', JSON.stringify(this.themeSettings));
     });

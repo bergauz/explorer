@@ -8,7 +8,7 @@ export class TrimExtra implements PipeTransform {
   transform(val: string): string {
     if (!val) {
       return '';
-    }    
+    }
     return val.substring(0, 9);
   }
 }

@@ -1,0 +1,42 @@
+@import "light";
+@import "dark";
+
+:root {
+  --main: var(--main-l);
+  --bg-alt: var(--bg-alt-l);
+  --mobile-bg: var(--mobile-bg-l);
+  --header: var(--header-l);
+  --font: var(--font-l);
+  --btn: var(--btn-l);
+  --bg-hover: var(--bg-hover-l);
+  --font-hover: var(--font-hover-l);
+  --link: var(--link-l);
+  --table-row: var(--table-row-l);
+  --shadow: var(--shadow-l);
+  --svg-fill: var(--svg-fill-l);
+  --font-active: var(--font-active-l);
+  --input-bg: var(--input-bg-l);
+  --font-alt: var(--font-alt-l);
+  --cards-alt: var(--cards-alt-l);
+  --loader: var(--loader-l);
+
+  :host-context(body.dark) {
+    --main: var(--main-d);
+    --bg-alt: var(--bg-alt-d);
+    --mobile-bg: var(--mobile-bg-d);
+    --header: var(--header-d);
+    --font: var(--font-d);
+    --btn: var(--btn-d);
+    --bg-hover: var(--bg-hover-d);
+    --font-hover: var(--font-hover-d);
+    --link: var(--link-d);
+    --table-row: var(--table-row-d);
+    --shadow: var(--shadow-d);
+    --svg-fill: var(--svg-fill-d);
+    --font-active: var(--font-active-d);
+    --input-bg: var(--input-bg-d);
+    --font-alt: var(--font-alt-d);
+    --cards-alt: var(--cards-alt-d);
+    --loader: var(--loader-d);
+  }
+}

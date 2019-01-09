@@ -1,12 +1,7 @@
-<div class="main-top">
-  <div class="main-top__search">
-    <h1>Explore your block</h1>
-    <app-search></app-search>
-  </div>
-</div>
+<app-main-top></app-main-top>
 <ng-container *ngIf="(transaction | async) as tx; else transactionNotFound">
-  <div class="uk-margin">
-    <div class="uk-overflow-auto list-holder">
+  <app-cards-holder>
+    <div>
       <ul>
         <li>
           <p>Transaction hash</p>
@@ -72,15 +67,13 @@
             </li>
           </ul>
         </li>
+        <li>
+          <p>Input data</p>
+          <pre>{{tx.input_data}}</pre>
+        </li>
       </ul>
     </div>
-    <div class="list-holder__footer">
-      <div>
-        <p>Input data</p>
-        <b><pre class="code">{{tx.input_data}}</pre></b>
-      </div>
-    </div>
-  </div>
+  </app-cards-holder>
 </ng-container>
 <ng-template #transactionNotFound>
   <app-info text="Transaction not found."></app-info>

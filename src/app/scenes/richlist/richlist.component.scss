@@ -1,12 +1,11 @@
-@import '../../../assets/styles/mixins.scss';
+@import '../../../assets/styles/utils/mixins';
+@import '../../../assets/styles/themes/themes-switch';
+
+$font: var(--font);
 
 h3 {
   font-size: 24px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #000;
-}
-
-.uk-table {
-  border-collapse: inherit;
+  color: $font;
 }

@@ -1,0 +1,80 @@
+@import "../../../assets/styles/themes/themes-switch";
+
+$font: var(--font);
+$table-row: var(--table-row);
+$link: var(--link);
+$mobile-bg: var(--mobile-bg);
+
+::ng-deep {
+  .--width-auto {
+    td {
+      max-width: 0;
+    }
+  }
+}
+
+:host ::ng-deep  {
+
+  table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+    th {
+      color: $font;
+      text-align: left;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background: $table-row;
+        }
+      }
+
+      td {
+        padding: 11px;
+        font-size: 14px;
+        text-align: left;
+        color: $font;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  ul {
+    margin: 20px 0;
+    padding: 20px;
+    list-style: none;
+    background: $mobile-bg;
+    overflow: auto;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      margin: 20px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      b {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

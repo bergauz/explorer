@@ -2,7 +2,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, last, map, tap} from 'rxjs/operators';
 /*SERVICES*/
 import {ToastrService} from '../modules/toastr/toastr.service';
 /*UTILS*/
@@ -16,7 +16,7 @@ export class ApiService {
   apiURL: string;
 
   constructor(private http: HttpClient, private toastrService: ToastrService) {
-    this.apiURL = this.getApiURL();
+    this.apiURL = 'https://explorer.gochain.io/api';
   }
 
   getApiURL() {
@@ -28,9 +28,7 @@ export class ApiService {
   get(url: string, params?: HttpParams): Observable<any> {
     return this.http.get<any>(this.apiURL + url, {
       params
-    }).pipe(
-      catchError(this._handleError)
-    );
+    }).pipe(catchError(this._handleError));
   }
 
   post(url: string, data?: any): Observable<any> {

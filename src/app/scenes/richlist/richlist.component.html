@@ -1,46 +1,44 @@
-<div class="main-top main-top--sm">
-  <div class="main-top__search">
-    <h1>Explore your block</h1>
-    <app-search></app-search>
-  </div>
-</div>
+<app-main-top class="translate" *ifViewportSize="['large']"></app-main-top>
+<app-main-top class="translate height" *ifViewportSize="['small']"></app-main-top>
 <ng-container *ngIf="richList">
   <h3>Richlist</h3>
-  <div class="uk-margin">
-    <ng-container *ifViewportSize="['small']">
-      <div class="tr-card" *ngFor="let address of richList.rankings; let rankI = index;">
-        <div>Rank: {{rankI + 1}}</div>
-        <div>Address: <a routerLink="/addr/{{address.address}}">{{address.address}}</a></div>
-        <div>Balance (GO): {{address.balance_wei | weiToGO: false : true | bigNumber}}</div>
-        <div>Supply owned: {{address.supplyOwned}}%</div>
-      </div>
-    </ng-container>
-    <ng-container *ifViewportSize="['large']">
-      <div class="uk-overflow-auto">
-        <table class="uk-table uk-table-small uk-table-divider uk-table-striped uk-table-middle">
-          <thead>
-          <tr>
-            <th class="uk-text-nowrap">Rank</th>
-            <th class="uk-text-nowrap">Address</th>
-            <th class="uk-text-nowrap uk-width-1-4">Balance (GO)</th>
-            <th class="uk-text-nowrap uk-width-1-6">Supply owned</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let address of richList.rankings; let rankI = index;">
-            <td>{{rankI + 1}}</td>
-            <td class="uk-text-nowrap"><a routerLink="/addr/{{address.address}}">{{address.address}}</a></td>
-            <td class="uk-text-nowrap ta-r ws-p">{{address.balance_wei | weiToGO: false : true | bigNumber}}</td>
-            <td class="uk-text-nowrap">{{address.supplyOwned}}%</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </ng-container>
-  </div>
+ <app-table>
+   <div>
+     <ng-container *ifViewportSize="['small']">
+       <ul *ngFor="let address of richList.rankings; let rankI = index;">
+         <li>Rank: {{rankI + 1}}</li>
+         <li>Address: <a routerLink="/addr/{{address.address}}">{{address.address}}</a></li>
+         <li>Balance (GO): {{address.balance_wei | weiToGO: false : true | bigNumber}}</li>
+         <li>Supply owned: {{address.supplyOwned}}%</li>
+       </ul>
+     </ng-container>
+     <ng-container *ifViewportSize="['large']">
+       <div>
+         <table>
+           <thead>
+           <tr>
+             <th>Rank</th>
+             <th>Address</th>
+             <th>Balance (GO)</th>
+             <th>Supply owned</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr *ngFor="let address of richList.rankings; let rankI = index;">
+             <td>{{rankI + 1}}</td>
+             <td><a routerLink="/addr/{{address.address}}">{{address.address}}</a></td>
+             <td>{{address.balance_wei | weiToGO: false : true | bigNumber}}</td>
+             <td>{{address.supplyOwned}}%</td>
+           </tr>
+           </tbody>
+         </table>
+       </div>
+     </ng-container>
+   </div>
+ </app-table>
 </ng-container>
 <div class="center">
-  <button type="button" class="btn btn--sm btn--round m--b--20" [disabled]="isMoreDisabled"
+  <button type="button" [disabled]="isMoreDisabled"
           (click)="richListQueryParams.next()">More
   </button>
 </div>

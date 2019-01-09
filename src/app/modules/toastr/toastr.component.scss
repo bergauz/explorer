@@ -2,7 +2,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 11;
+  z-index: 7;
+
   &__item {
     padding: 10px 30px;
     color: #fff !important;
@@ -11,6 +12,7 @@
     position: relative;
     border-bottom: 1px solid #aaa;
   }
+
   &__close {
     position: absolute;
     top: 10px;
@@ -20,15 +22,19 @@
     align-items: center;
     cursor: pointer;
   }
+
   &--success {
     background: #20b2aa;
   }
+
   &--danger {
     background: #ff0000;
   }
+
   &--warning {
     background: #ff4500;
   }
+
   &--info {
     background: #1e90ff;
   }

@@ -1,4 +1,8 @@
-@import "../../../assets/styles/mixins";
+@import "../../../assets/styles/utils/mixins";
+@import "../../../assets/styles/themes/themes-switch";
+
+$btn: var(--btn);
+
 /* The switch - the box around the slider */
 
 .switch {
@@ -46,6 +50,7 @@
   transform: translate(0, -50%);
   background-color: white;
   transition: .4s;
+
   @include respond-to(small) {
     width: 47px;
     height: 47px;
@@ -54,7 +59,7 @@
 }
 
 input:checked + .slider {
-  background-color: #06A5FF;
+  background-color: $btn;
 }
 
 input:focus + .slider {
@@ -71,7 +76,7 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
   -webkit-tap-highlight-color: transparent;
-  background-color: #06A5FF;
+  background-color: $btn;
 }
 
 .slider.round:before {
@@ -101,10 +106,4 @@ svg {
 
 .fill-moon-light path {
   fill: #E9E9E9;;
-}
-
-:host-context(body.dark) {
-  input:checked + .slider {
-    background-color: #7f00f6;
-  }
 }
