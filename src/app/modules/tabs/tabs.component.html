@@ -1,19 +1,16 @@
 <div class="tabs">
   <div class="tabs__titles">
-    <div class="tabs__title"
-         *ngFor="let tab of tabs"
-         [ngClass]="{'tabs__title--active': tab === activeTab,
-                     'single': tabs.length === 1}"
-         [ngStyle]="{'border-radius': tabs.length === 1  ? '100px' : ''}"
-         (click)="onTabSelect(tab)"
-         [innerHTML]="tab.title.element.nativeElement.innerHTML"
-    >
+    <div class="tabs__scroll-block">
+      <div class="tabs__title"
+           *ngFor="let tab of tabs"
+           [ngClass]="{'tabs__title--active': tab === activeTab, 'single': tabs.length === 1}"
+           (click)="onTabSelect(tab)"
+      >
+        <ng-container [ngTemplateOutlet]="tab.title.tabTitleRef"></ng-container>
+      </div>
     </div>
   </div>
-  <div
-      *ngIf="activeTab"
-      class="tabs__content"
-      [innerHTML]="activeTab.content.element.nativeElement.innerHTML"
-  >
+  <div class="tabs__content">
+    <ng-container [ngTemplateOutlet]="activeTab?.content.tabContentRef"></ng-container>
   </div>
 </div>

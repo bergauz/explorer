@@ -1,4 +1,6 @@
+/*CORE*/
 import {Component, ContentChild, Input} from '@angular/core';
+/*COMPONENTS*/
 import { TabTitleComponent } from '../tab-title/tab-title.component';
 import { TabContentComponent } from '../tab-content/tab-content.component';
 

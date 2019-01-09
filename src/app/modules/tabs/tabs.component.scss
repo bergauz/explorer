@@ -1,4 +1,11 @@
-@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/utils/mixins';
+@import '../../../assets/styles/themes/themes-switch';
+
+$btn: var(--btn);
+$font: var(--font);
+$titles-bg: var(--header);
+$font-hover: var(--font-hover);
+$color-active: var(--font-active);
 
 h3 {
   font-size: 24px;
@@ -8,14 +15,23 @@ h3 {
 
 .tabs {
   &__titles {
+    overflow: auto;
+    margin: 60px auto;
+    padding: 0 10px;
+    border-radius: 30px;
+  }
+
+  &__scroll-block {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    margin: 60px auto;
-    -webkit-tap-highlight-color: transparent;
+    margin: 20px auto;
+    max-width: max-content;
+    border-radius: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
 
     @include respond-to(small) {
-      margin: 60px auto 30px;
+      min-width: max-content;
     }
   }
 
@@ -32,11 +48,19 @@ h3 {
     cursor: pointer;
     font-weight: 300;
     font-size: 14px;
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
+    color: $font;
+    background: $titles-bg;
 
     @include respond-to(small) {
-      font-size: 12px;
-      padding: 15px 10px;
+      padding: 15px;
+    }
+
+    &:hover {
+      color: $font-hover;
+
+      @include respond-to(small) {
+        color: inherit;
+      }
     }
 
     &:first-child {
@@ -48,26 +72,20 @@ h3 {
     }
 
     &--active {
-      color: #fff;
-      background: #06A5FF;
+      color: $color-active;
+      background: $btn;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
-}
 
-.single {
-  @include respond-to(small) {
-    padding: 15px 40px;
-  }
-}
+  &__title.single {
+    border-radius: 100px;
 
-:host-context(body.dark) {
-  .tabs {
-    &__title {
-      background: #1e1340;
-      &--active {
-        background: #140d28;
-        box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
-      }
+    @include respond-to(small) {
+      padding: 15px 40px;
     }
   }
 }
