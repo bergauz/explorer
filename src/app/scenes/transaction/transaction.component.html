@@ -1,12 +1,7 @@
-<div class="main-top">
-  <div class="main-top__search">
-    <h1>Explore your block</h1>
-    <app-search></app-search>
-  </div>
-</div>
+<app-main-top></app-main-top>
 <ng-container *ngIf="(transaction | async) as tx; else transactionNotFound">
-  <div class="uk-margin">
-    <div class="uk-overflow-auto list-holder">
+  <app-cards-holder>
+    <div>
       <ul>
         <li>
           <p>Transaction hash</p>
@@ -72,23 +67,18 @@
             </li>
           </ul>
         </li>
+        <li>
+          <p>Input data
+            <button  [ngClass]="{'btn--active': !showUtf8}" (click)="showUtf8 = false">HEX</button>
+            <button  [ngClass]="{'btn--active': showUtf8}" (click)="showUtf8 = true">UTF-8</button>
+          </p>
+          <b>
+            <pre class="code">{{tx.input_data | hex2str: showUtf8}}</pre>
+          </b>
+        </li>
       </ul>
     </div>
-    <div class="list-holder__footer">
-
-      <div>
-        <p>Input data
-          <span class="pull-r btn-group">
-            <button class="btn btn--sm" [ngClass]="{'btn--active': !showUtf8}" (click)="showUtf8 = false">HEX</button>
-            <button class="btn btn--sm" [ngClass]="{'btn--active': showUtf8}" (click)="showUtf8 = true">UTF-8</button>
-          </span>
-        </p>
-        <b>
-          <pre class="code">{{tx.input_data | hex2str: showUtf8}}</pre>
-        </b>
-      </div>
-    </div>
-  </div>
+  </app-cards-holder>
 </ng-container>
 <ng-template #transactionNotFound>
   <app-info text="Transaction not found."></app-info>

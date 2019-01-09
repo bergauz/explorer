@@ -1,9 +1,4 @@
-<div class="main-top main-top--sm">
-  <div class="main-top__search">
-    <h1>Explore your block</h1>
-    <app-search></app-search>
-  </div>
-</div>
+<app-main-top class="translate height"></app-main-top>
 <h3>Verify Contract: </h3>
 <p>
   Verify and Publish Contract Source Code
@@ -16,51 +11,29 @@
   Compiler version: {{compilerVersion$ | async}}
 </p>
 
-<form class="uk-form-horizontal" [formGroup]="form" (submit)="onSubmit()">
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Contract Address*</label>
-    <div class="uk-form-controls">
-      <input class="uk-input" type="text" placeholder="" formControlName="address">
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div>
+    <label>Contract Address*</label>
+    <div>
+      <input type="text" placeholder="" formControlName="address">
     </div>
   </div>
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Contract Name*</label>
-    <div class="uk-form-controls">
-      <input class="uk-input" type="text" placeholder="" formControlName="contract_name">
+  <div>
+    <label>Contract Name*</label>
+    <div>
+      <input type="text" placeholder="" formControlName="contract_name">
     </div>
   </div>
-  <!--<div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-select">Compiler*</label>
-    <div class="uk-form-controls">
-      <select class="uk-select" id="form-horizontal-select" formControlName="compiler_version">
-        <option value="" disabled selected>Select compiler</option>
-        <option *ngFor="let compiler of compilers">{{compiler}}</option>
-      </select>
-    </div>
-  </div>-->
-  <!--<div class="uk-margin">
-    <div class="uk-form-label">Optimization*</div>
-    <div class="uk-form-controls uk-form-controls-text">
-      <label><input class="uk-radio" type="radio" name="optimization" formControlName="optimization" [value]="true"> Enabled</label><br>
-      <label><input class="uk-radio" type="radio" name="optimization" formControlName="optimization" [value]="false"> Disabled</label>
-    </div>
-  </div>-->
-  <div class="uk-margin">
-    <div class="uk-form-label">Contract Code*</div>
-    <div class="uk-form-controls uk-form-controls-text">
-      <textarea class="uk-textarea" rows="9" placeholder="" formControlName="source_code"></textarea>
+  <div>
+    <div>Contract Code*</div>
+    <div>
+      <textarea rows="9" placeholder="" formControlName="source_code"></textarea>
     </div>
   </div>
-  <!--<div class="uk-margin">
-    <div class="uk-form-label">Constructor Arguments ABI-encoded (OPTIONAL - Required for certain contracts only):</div>
-    <div class="uk-form-controls uk-form-controls-text">
-      <input class="uk-input" id="form-horizontal-text" type="text" placeholder="" formControlName="abi">
-    </div>
-  </div>-->
   <div appRecaptcha key="{{recaptchaPublicKey}}" actionName="contractVerification"
        formControlName="recaptcha_token"></div>
-  <div class="uk-margin">
-    <div class="uk-form-controls">
+  <div>
+    <div>
       <button class="btn" type="submit">Validate Code</button>
     </div>
   </div>

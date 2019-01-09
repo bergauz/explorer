@@ -1,8 +1,11 @@
-import {Inject, Injectable, NgZone} from '@angular/core';
-import {ViewportSizeEnum} from './viewport-size.enum';
-import {IConfig} from './config.interface';
+/*CORE*/
 import {BehaviorSubject, fromEvent} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {Inject, Injectable, NgZone} from '@angular/core';
+/*UTILS*/
+import {ViewportSizeEnum} from './viewport-size.enum';
+import {IConfig} from './config.interface';
+
 
 @Injectable()
 export class ViewportSizeService {

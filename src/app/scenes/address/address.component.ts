@@ -96,7 +96,7 @@ export class AddressComponent implements OnInit {
     this._commonService.getAddressTransactions(this.addrHash, this.transactionQueryParams.params).subscribe((data: any) => {
       if (data.transactions && data.transactions.length) {
         this.transactions = this.transactions.concat(data.transactions);
-        if (data.transactions.length < this.transactionQueryParams.limit) {
+        if (data.transactions.length <= this.transactionQueryParams.limit) {
           this.transactionScrollState = false;
         }
       }
@@ -109,7 +109,7 @@ export class AddressComponent implements OnInit {
     this._commonService.getAddressHolders(this.addrHash, this.holderQueryParams.params).subscribe((data: any) => {
       if (data.token_holders && data.token_holders.length) {
         this.token_holders = this.token_holders.concat(data.token_holders);
-        if (data.token_holders.length < this.holderQueryParams.limit) {
+        if (data.token_holders.length <= this.holderQueryParams.limit) {
           this.holderScrollState = false;
         }
       }
@@ -122,7 +122,7 @@ export class AddressComponent implements OnInit {
     this._commonService.getAddressInternalTransaction(this.addrHash, this.internalTransactionQueryParams.params).subscribe((data: any) => {
       if (data.internal_transactions && data.internal_transactions.length) {
         this.internal_transactions = this.internal_transactions.concat(data.internal_transactions);
-        if (data.internal_transactions.length < this.internalTransactionQueryParams.limit) {
+        if (data.internal_transactions.length <= this.internalTransactionQueryParams.limit) {
           this.internalTransactionScrollState = false;
         }
       }

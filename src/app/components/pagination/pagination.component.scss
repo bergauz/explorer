@@ -1,13 +1,37 @@
-.uk-pagination>* {
-  padding-left: 0;
-  width: 30px;
-  text-align: center;
-  user-select: none;
-  &:not(.uk-disabled) {
-    cursor: pointer;
-  }
-}
+@import "../../../assets/styles/themes/themes-switch";
 
-.uk-active {
-  border: 1px solid;
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  padding: 0;
+  list-style: none;
+
+  span {
+    vertical-align: sub;
+
+    svg {
+      height: 15px;
+    }
+  }
+
+  * {
+    padding-left: 0;
+    width: 30px;
+    text-align: center;
+    user-select: none;
+  }
+
+  >* {
+    flex: none;
+    position: relative;
+  }
+
+  .disabled {
+    pointer-events: none
+  }
+
+  .active {
+    border: 1px solid;
+  }
 }

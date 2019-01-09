@@ -8,34 +8,34 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     title: 'Blocks',
     link: '/home',
-    icon: 'fa fa-link fa-fw'
+    icon: ''
   },
   {
     title: 'Rich List',
     link: '/richlist',
-    icon: 'fa fa-list-ul fa-fw'
+    icon: ''
   },
   /*{
     title: 'Verify Contract',
     link: '/verify',
-    icon: 'fa fa-check-square fa-fw'
+    icon: ''
   },*/
   {
     title: 'Wallet',
     link: 'https://wallet.gochain.io',
-    icon: 'fa fa-wallet fa-fw',
+    icon: '',
     external: true
   },
   {
     title: 'Network Stats',
     link: 'https://stats.gochain.io',
-    icon: 'fa fa-broadcast-tower fa-fw',
+    icon: '',
     external: true
   },
   /*{
     title: 'Settings',
     link: '/settings',
-    icon: 'fa fa-cogs fa-fw',
+    icon: '',
   },*/
 ];
 

@@ -28,6 +28,7 @@ export class PwaBannerComponent implements OnInit, OnDestroy {
   initPrompt(): void {
     this._sub$ = fromEvent(window, 'beforeinstallprompt').pipe(
       tap((event) => {
+        event.preventDefault();
         this.deferedPrompt = event;
         this.toggleBanner = true;
       }),

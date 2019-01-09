@@ -1,0 +1,71 @@
+@import "../../../assets/styles/utils/mixins";
+@import "../../../assets/styles/themes/themes-switch";
+
+$link: var(--link);
+$font: var(--font);
+$card-bg: var(--bg-alt);
+$bottom-block-bg: var(--cards-alt);
+
+:host ::ng-deep > div {
+  overflow: auto;
+  position: relative;
+  z-index: 2;
+  background: $card-bg;
+  max-width: 900px;
+  margin: -100px auto 40px;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
+
+  a {
+    text-decoration: underline;
+    color: $link;
+  }
+
+  @include respond-to(small) {
+    margin-top: -100px;
+  }
+
+  ul {
+    padding: 30px;
+    margin: 0;
+
+    li {
+      display: block;
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      padding: 0;
+      display: flex;
+      margin: 0;
+
+      @include respond-to(small) {
+        flex-direction: column;
+      }
+
+      li {
+        width: 200px;
+
+        @include respond-to(small) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+    font-weight: 300;
+    font-size: 14px;
+    color: $font;
+  }
+
+  b {
+    color: $link;
+    font-size: 16px;
+  }
+}
+

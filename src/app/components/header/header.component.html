@@ -1,6 +1,6 @@
-<nav class="topbar bg-gradient">
-  <div class="topbar__left">
-    <div class="topbar__icon">
+<nav class="nav">
+  <div class="nav__left">
+    <div class="nav__icon">
     <a routerLink="/">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2093.51 386.41" class="logo">
         <path class="cls-1"
@@ -35,12 +35,12 @@
         </svg>
       </a>
     </div>
-    <div class="topbar__theme">
+    <div class="nav__theme">
       <app-toggle-switch></app-toggle-switch>
     </div>
   </div>
-<div class="topbar__right">
-  <div class="topbar__menu">
+<div class="nav__right">
+  <div class="nav__menu">
     <ng-container *ngFor="let navItem of navItems">
       <a
         *ngIf="!navItem.external"

@@ -1,0 +1,85 @@
+@import "../../../assets/styles/utils/mixins";
+@import "../../../assets/styles/themes/themes-switch";
+
+$font: var(--font);
+
+.main-top {
+  position: relative;
+  background: url("../../../assets/images/main.png") no-repeat center;
+  background-size: cover;
+  height: 350px;
+  margin: 0 -40px;
+
+  @include respond-to(small) {
+    margin: 0 -10px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, .8);
+    z-index: 1;
+  }
+
+  &--sm {
+    @include respond-to(small) {
+      height: 200px;
+    }
+  }
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+    margin: 0 auto;
+    max-width: 660px;
+    width: 100%;
+
+    @include respond-to(small) {
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $font;
+      text-align: center;
+      margin-top: 0;
+
+      @include  respond-to(small) {
+        font-size: 29px;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .translate {
+    .main-top {
+      div {
+        transform: translate(-50%, -55%) !important;
+      }
+    }
+  }
+
+  .height {
+    .main-top {
+      height: 200px;
+    }
+  }
+}
+
+:host-context(body.dark) {
+  .main-top {
+    &:before {
+      content: none;
+    }
+  }
+}

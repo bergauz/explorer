@@ -1,4 +1,13 @@
-.topbar {
+@import "../../../assets/styles/themes/themes-switch";
+
+$nav-bg: var(--header);
+$font-color: var(--font);
+$font-hover: var(--font-hover);
+$bg-hover: var(--bg-hover);
+$shadow: var(--shadow);
+$btn: var(--btn);
+
+.nav {
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -6,9 +15,10 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 3;
   height: 70px;
   padding: 0 35px;
+  background: $nav-bg;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
 
   &__left {
@@ -22,10 +32,12 @@
 
   &__icon {
     display: flex;
-    img, svg {
+
+    svg {
       height: 30px;
     }
   }
+
   &__menu {
     display: flex;
     margin-left: 20px;
@@ -35,56 +47,31 @@
 .menu {
   &__item {
     display: flex;
-    align-items: center;
     margin: 0 3px;
-    padding: 7px 40px;
+    padding: 7px 35px;
     border-radius: 100px;
+    align-items: center;
     text-decoration: none;
-    color: #333;
+    transition: color .1s ease-in-out;
+    color: $font-color;
 
     &:hover {
-      color: #06A5FF;
+      color: $font-hover;
     }
 
     &--active {
-      box-shadow: 0 5px 10px rgba(6, 165, 255, 0.2);
-      background: #06A5FF;
+      box-shadow: $shadow;
+      background: $btn;
+      color: #fff;
 
       &:hover {
-        color: #000;
-      }
-
-      & * {
+        background: $bg-hover;
         color: #fff;
       }
     }
 
     &__icon {
       margin-right: 5px;
-    }
-  }
-}
-
-:host-context(body.dark) {
-  .menu {
-    &__item {
-
-      &:hover {
-        div {
-          color: lighten(#7500f5, 25%) !important;
-        }
-      }
-
-      &--active {
-        background: #7500f5;
-        box-shadow: 0 5px 10px rgba(117, 0, 245, 0.2);
-
-        &:hover {
-          div {
-            color: #eee !important;
-          }
-        }
-      }
     }
   }
 }

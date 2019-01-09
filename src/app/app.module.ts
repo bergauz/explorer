@@ -22,6 +22,9 @@ import {PaginationComponent} from './components/pagination/pagination.component'
 import {MobileMenuComponent} from './components/mobile-menu/mobile-menu.component';
 import {ToggleSwitchComponent} from './components/toggle-switch/toggle-switch.component';
 import {MobileHeaderComponent} from './components/mobile-header/mobile-header.component';
+import {MainTopComponent} from './components/main-top/main-top.component';
+import {TableComponent} from './components/table/table.component';
+import {CardsHolderComponent} from './components/cards-holder/cards-holder.component';
 // import {SettingsComponent} from './scenes/settings/settings.component';
 import {InfoComponent} from './components/info/info.component';
 import {ContractComponent} from './scenes/contract/contract.component';
@@ -34,11 +37,11 @@ import {ViewportSizeModule} from './modules/viewport-size/viewport-size.module';
 import {TabsModule} from './modules/tabs/tabs.module';
 import {PipesModule} from './modules/pipes.module';
 import {DirectiveModule} from './directives/directives.module';
-import {NgProgressModule} from '@ngx-progressbar/core';
-import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {SliderModule} from './modules/slider/slider.module';
 import {ToastrModule} from './modules/toastr/toastr.module';
 import {PwaBannerModule} from './modules/pwa-banner/pwa-banner.module';
+import {ProgressBarModule} from './modules/progress-bar/progress-bar.module';
+import {ModalModule} from './modules/modal/modal.module';
 /*PIPES*/
 import {TimeAgoPipe} from 'time-ago-pipe';
 /*UTILS*/
@@ -66,6 +69,9 @@ import {VIEWPORT_SIZES} from './modules/viewport-size/contants';
     MobileMenuComponent,
     InfoComponent,
     ContractComponent,
+    MainTopComponent,
+    TableComponent,
+    CardsHolderComponent
   ],
   imports: [
     RouterModule.forRoot(APP_ROUTES),
@@ -80,13 +86,8 @@ import {VIEWPORT_SIZES} from './modules/viewport-size/contants';
     TabsModule,
     SliderModule,
     PwaBannerModule,
-    NgProgressModule.forRoot({
-      trickleSpeed: 200,
-      min: 20,
-      meteor: false,
-      spinner: false
-    }),
-    NgProgressHttpModule.forRoot(),
+    ProgressBarModule,
+    ModalModule,
     ToastrModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],

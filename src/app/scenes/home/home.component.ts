@@ -8,7 +8,9 @@ import {CommonService} from '../../services/common.service';
 /*MODELS*/
 import {BlockList} from '../../models/block_list.model';
 import {Stats} from '../../models/stats.model';
-import {ISliderOptions} from '../../modules/slider/slider.component';
+/*UTILS*/
+import {ISliderOptions} from '../../modules/slider/slider.interface';
+import {IModalContent} from '../../modules/modal/modal.interface';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +37,16 @@ export class HomeComponent implements OnInit {
     sensitivity: 20
   };
 
+  modalContent: IModalContent = {
+    title: 'Modal',
+    content: 'Modal content content'
+  };
+
   constructor(private _commonService: CommonService, private _layoutService: LayoutService) {
+  }
+
+  trackByFn(index, block) {
+    return block.number;
   }
 
   ngOnInit() {

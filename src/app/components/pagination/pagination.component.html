@@ -1,14 +1,22 @@
-<ul class="uk-pagination uk-flex-center">
-  <li [ngClass]="{'uk-disabled': current === 1}"><span><i class="fa fa-chevron-left" (click)="previous()"></i></span></li>
+<ul>
+  <li [ngClass]="{'disabled': current === 1}">
+    <span (click)="previous()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12l18-12v24z"/></svg>
+    </span>
+  </li>
   <ng-container *ngFor="let item of items">
     <li
         *ngIf="item.type === 'page'"
         (click)="onPageSelect(item.value)"
-        [ngClass]="{'uk-active': current == item.value}"
+        [ngClass]="{'active': current == item.value}"
     >
       <span>{{item.value}}</span>
     </li>
-    <li *ngIf="item.type === 'dot'" class="uk-disabled"><span>{{item.value}}</span></li>
+    <li *ngIf="item.type === 'dot'" class="disabled"><span>{{item.value}}</span></li>
   </ng-container>
-  <li [ngClass]="{'uk-disabled': current === _total}"><span><i class="fa fa-chevron-right" (click)="next()"></i></span></li>
+  <li [ngClass]="{'disabled': current === _total}">
+    <span (click)="next()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M21 12l-18 12v-24z"/></svg>
+    </span>
+  </li>
 </ul>
