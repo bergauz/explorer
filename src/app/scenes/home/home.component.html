@@ -1,5 +1,4 @@
 <app-main-top></app-main-top>
-<app-modal [modalContent]="modalContent"></app-modal>
 <ng-container *ngIf="stats$ | async as stats">
   <div class="home__slider">
     <app-slider [stats]="stats" [options]="sliderOptions"></app-slider>

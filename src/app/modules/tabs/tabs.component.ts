@@ -1,5 +1,12 @@
 /*CORE*/
-import {AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnInit,
+  QueryList
+} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 /*COMPONENTS*/
@@ -14,15 +21,17 @@ import {AutoUnsubscribe} from '../../decorators/auto-unsubscribe';
 })
 @AutoUnsubscribe('_subsArr$')
 export class TabsComponent implements OnInit, AfterContentInit {
+
   @Input() name: string;
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+
   activeTab: TabComponent;
 
   private _initialTabName: string;
   private _subsArr$: Subscription[] = [];
 
-  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {
-  }
+  constructor(private _activatedRoute: ActivatedRoute,
+              private _router: Router) {}
 
   ngOnInit() {
     this._subsArr$.push(this._activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
@@ -62,7 +71,7 @@ export class TabsComponent implements OnInit, AfterContentInit {
       relativeTo: this._activatedRoute,
       queryParams: {
         ...this._activatedRoute.snapshot.queryParams,
-        [this.name]: tab.name,
+        [this.name]: tab.name
       }
     });
   }

@@ -10,7 +10,6 @@ import {BlockList} from '../../models/block_list.model';
 import {Stats} from '../../models/stats.model';
 /*UTILS*/
 import {ISliderOptions} from '../../modules/slider/slider.interface';
-import {IModalContent} from '../../modules/modal/modal.interface';
 
 @Component({
   selector: 'app-home',
@@ -35,11 +34,6 @@ export class HomeComponent implements OnInit {
     start: 50,
     step: 50,
     sensitivity: 20
-  };
-
-  modalContent: IModalContent = {
-    title: 'Modal',
-    content: 'Modal content content'
   };
 
   constructor(private _commonService: CommonService, private _layoutService: LayoutService) {

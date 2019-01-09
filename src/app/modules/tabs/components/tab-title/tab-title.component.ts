@@ -1,9 +1,9 @@
-import { Component, ElementRef } from '@angular/core';
+import {Component, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'tab-title',
   templateUrl: 'tab-title.component.html'
 })
 export class TabTitleComponent {
-  constructor(public element: ElementRef) { }
+  @ViewChild(TemplateRef) tabTitleRef: TemplateRef<TabTitleComponent>;
 }

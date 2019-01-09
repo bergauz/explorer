@@ -5,7 +5,12 @@
         {{item.content}}
       </div>
       <div class="toastr__close" (click)="toastrService.delete(item.id)">
-        <i>!!!</i>
+        <i>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.1667 0L22 1.83333L1.83333 22L0 20.1667L20.1667 0Z" fill="white"/>
+            <path d="M1.74628e-05 1.83334L1.83335 1.18995e-05L22 20.1667L20.1667 22L1.74628e-05 1.83334Z" fill="white"/>
+          </svg>
+        </i>
       </div>
     </div>
   </ng-container>

@@ -65,82 +65,138 @@
           Transactions
         </tab-title>
         <tab-content>
-            <ng-container *ngIf="transactions.length; else emptyTransactions">
-              <app-table>
-                <ng-container *ifViewportSize="['small']">
-                  <ul *ngFor="let tx of transactions">
-                    <li>Tx hash: <a routerLink="/tx/{{tx.tx_hash}}">{{tx.tx_hash}}</a>
-                    </li>
-                    <li>Created: {{tx.created_at| date: 'dd/MM/yyyy HH:mm:ss'}}
-                      ({{tx.created_at | timeAgo}})
-                    </li>
-                    <li>Associate:
+          <ng-container *ngIf="transactions.length; else emptyTransactions">
+            <app-table>
+              <ng-container *ifViewportSize="['small']">
+                <ul *ngFor="let tx of transactions">
+                  <li>Tx hash: <a routerLink="/tx/{{tx.tx_hash}}">{{tx.tx_hash}}</a>
+                  </li>
+                  <li>Created: {{tx.created_at| date: 'dd/MM/yyyy HH:mm:ss'}}
+                    ({{tx.created_at | timeAgo}})
+                  </li>
+                  <li>Associate:
+                    <ng-container *ngIf="addr.address === tx.to; else out">
+                      <i>
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="444.822px" height="444.822px" viewBox="0 0 444.822 444.822"
+                             xml:space="preserve">
+                          <g>
+                            <path d="M423.265,178.298c-6.19-7.139-14.229-10.707-24.126-10.707H198.148L281.8,83.937c7.234-7.229,10.848-15.891,10.848-25.981
+                                     c0-10.085-3.613-18.747-10.848-25.979l-21.413-21.129C253.156,3.619,244.59,0,234.693,0c-10.089,0-18.752,3.615-25.981,10.848
+                                     L22.848,196.428c-7.043,7.423-10.564,16.084-10.564,25.981c0,10.089,3.521,18.654,10.564,25.693l185.864,186.152
+                                     c7.422,7.043,16.083,10.567,25.981,10.567c10.085,0,18.65-3.524,25.693-10.567l21.413-21.693
+                                     c7.234-6.851,10.848-15.42,10.848-25.693c0-10.284-3.613-18.853-10.848-25.7l-83.652-83.939h200.991
+                                     c9.896,0,17.936-3.569,24.126-10.707c6.184-7.139,9.274-15.749,9.274-25.838v-36.545
+                                     C432.542,194.05,429.448,185.437,423.265,178.298z"/>
+                          </g>
+                          </svg>
+                      </i>
+                      <a routerLink="/addr/{{tx.from}}">{{tx.from}}</a>
+                    </ng-container>
+                    <ng-template #out>
+                      <i>
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             width="444.815px" height="444.815px" viewBox="0 0 444.815 444.815"
+                             xml:space="preserve">
+                            <g>
+                              <path d="M421.976,196.712L236.111,10.848C228.884,3.615,220.219,0,210.131,0c-9.9,0-18.464,3.615-25.697,10.848L163.023,32.26
+                              c-7.234,6.853-10.85,15.418-10.85,25.697c0,10.277,3.616,18.842,10.85,25.697l83.653,83.937H45.677
+                              c-9.895,0-17.937,3.568-24.123,10.707s-9.279,15.752-9.279,25.837v36.546c0,10.088,3.094,18.698,9.279,25.837
+                              s14.228,10.704,24.123,10.704h200.995L163.02,360.88c-7.234,7.228-10.85,15.89-10.85,25.981c0,10.089,3.616,18.75,10.85,25.978
+                              l21.411,21.412c7.426,7.043,15.99,10.564,25.697,10.564c9.899,0,18.562-3.521,25.981-10.564l185.864-185.864
+                              c7.043-7.043,10.567-15.701,10.567-25.981C432.54,211.939,429.016,203.37,421.976,196.712z"/>
+                            </g>
+                          </svg>
+                      </i>
+                      <a routerLink="/addr/{{tx.to}}">{{tx.to}}</a>
+                    </ng-template>
+                  </li>
+                  <li>Value (GO): {{addr.address === tx.to ? '+' : '-'}} {{tx.value | weiToGO: false : false |
+                      bigNumber}}
+                  </li>
+                </ul>
+              </ng-container>
+              <ng-container *ifViewportSize="['large']">
+                <div>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th>Transaction hash</th>
+                      <th>Created at</th>
+                      <th></th>
+                      <th>Associate</th>
+                      <th>Value (GO)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let tx of transactions">
+                      <td><a routerLink="/tx/{{tx.tx_hash}}">{{tx.tx_hash}}</a></td>
+                      <td>
+                        {{tx.created_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.created_at | timeAgo}})
+                      </td>
                       <ng-container *ngIf="addr.address === tx.to; else out">
-                        <i> < </i>
-                        <a routerLink="/addr/{{tx.from}}">{{tx.from}}</a>
+                        <td>
+                          <i>
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="444.822px" height="444.822px" viewBox="0 0 444.822 444.822"
+                                 xml:space="preserve">
+                              <g>
+                                <path d="M423.265,178.298c-6.19-7.139-14.229-10.707-24.126-10.707H198.148L281.8,83.937c7.234-7.229,10.848-15.891,10.848-25.981
+                                         c0-10.085-3.613-18.747-10.848-25.979l-21.413-21.129C253.156,3.619,244.59,0,234.693,0c-10.089,0-18.752,3.615-25.981,10.848
+                                         L22.848,196.428c-7.043,7.423-10.564,16.084-10.564,25.981c0,10.089,3.521,18.654,10.564,25.693l185.864,186.152
+                                         c7.422,7.043,16.083,10.567,25.981,10.567c10.085,0,18.65-3.524,25.693-10.567l21.413-21.693
+                                         c7.234-6.851,10.848-15.42,10.848-25.693c0-10.284-3.613-18.853-10.848-25.7l-83.652-83.939h200.991
+                                         c9.896,0,17.936-3.569,24.126-10.707c6.184-7.139,9.274-15.749,9.274-25.838v-36.545
+                                         C432.542,194.05,429.448,185.437,423.265,178.298z"/>
+                              </g>
+                            </svg>
+                          </i>
+                        </td>
+                        <td>
+                          <a routerLink="/addr/{{tx.from}}">{{tx.from}}</a>
+                        </td>
                       </ng-container>
                       <ng-template #out>
-                        <i> > </i>
-                        <a routerLink="/addr/{{tx.to}}">{{tx.to}}</a>
+                        <td>
+                          <i>
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 width="444.815px" height="444.815px" viewBox="0 0 444.815 444.815"
+                                 xml:space="preserve">
+                              <g>
+                                <path d="M421.976,196.712L236.111,10.848C228.884,3.615,220.219,0,210.131,0c-9.9,0-18.464,3.615-25.697,10.848L163.023,32.26
+                                c-7.234,6.853-10.85,15.418-10.85,25.697c0,10.277,3.616,18.842,10.85,25.697l83.653,83.937H45.677
+                                c-9.895,0-17.937,3.568-24.123,10.707s-9.279,15.752-9.279,25.837v36.546c0,10.088,3.094,18.698,9.279,25.837
+                                s14.228,10.704,24.123,10.704h200.995L163.02,360.88c-7.234,7.228-10.85,15.89-10.85,25.981c0,10.089,3.616,18.75,10.85,25.978
+                                l21.411,21.412c7.426,7.043,15.99,10.564,25.697,10.564c9.899,0,18.562-3.521,25.981-10.564l185.864-185.864
+                                c7.043-7.043,10.567-15.701,10.567-25.981C432.54,211.939,429.016,203.37,421.976,196.712z"/>
+                              </g>
+                            </svg>
+                          </i>
+                        </td>
+                        <td>
+                          <a routerLink="/addr/{{tx.to}}">{{tx.to}}</a>
+                        </td>
                       </ng-template>
-                    </li>
-                    <li>Value (GO): {{addr.address === tx.to ? '+' : '-'}} {{tx.value | weiToGO: false : false |
-                        bigNumber}}
-                    </li>
-                  </ul>
-                </ng-container>
-                <ng-container *ifViewportSize="['large']">
-                  <div>
-                    <table>
-                      <thead>
-                      <tr>
-                        <th>Transaction hash</th>
-                        <th>Created at</th>
-                        <th></th>
-                        <th>Associate</th>
-                        <th>Value (GO)</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let tx of transactions">
-                        <td><a routerLink="/tx/{{tx.tx_hash}}">{{tx.tx_hash}}</a></td>
-                        <td>
-                          {{tx.created_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.created_at | timeAgo}})
-                        </td>
-                        <ng-container *ngIf="addr.address === tx.to; else out">
-                          <td>
-                            <i> < </i>
-                          </td>
-                          <td>
-                            <a routerLink="/addr/{{tx.from}}">{{tx.from}}</a>
-                          </td>
-                        </ng-container>
-                        <ng-template #out>
-                          <td>
-                            <i> > </i>
-                          </td>
-                          <td>
-                            <a routerLink="/addr/{{tx.to}}">{{tx.to}}</a>
-                          </td>
-                        </ng-template>
-                        <td>
-                          {{addr.address === tx.to ? '+' : '-'}} {{tx.value | weiToGO: false : true | bigNumber}}
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </ng-container>
-              </app-table>
-              <div>
-                <ng-template [appInfinityScroll]="transactionScrollState" (onView)="onScroll('transaction')">
-                  <app-loader *ngIf="transactionScrollState"></app-loader>
-                </ng-template>
-              </div>
-            </ng-container>
-            <ng-template #emptyTransactions>
-              <div class="empty">Transactions</div>
-            </ng-template>
+                      <td>
+                        {{addr.address === tx.to ? '+' : '-'}} {{tx.value | weiToGO: false : true | bigNumber}}
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ng-container>
+            </app-table>
+            <div>
+              <ng-template [appInfinityScroll]="transactionScrollState" (onView)="onScroll('transaction')">
+                <app-loader *ngIf="transactionScrollState"></app-loader>
+              </ng-template>
+            </div>
+          </ng-container>
+          <ng-template #emptyTransactions>
+            <div class="empty">Transactions</div>
+          </ng-template>
         </tab-content>
       </tab>
       <tab *ngIf="addr.contract && addr.go20" name="internal_transactions">
@@ -148,55 +204,56 @@
           Internal Transactions
         </tab-title>
         <tab-content>
-            <ng-container *ngIf="internal_transactions.length; else emptyInternal">
-              <app-table>
-                <ng-container *ifViewportSize="['small']">
-                  <ul *ngFor="let tx of internal_transactions">
-                    <li><a routerLink="/tx/{{tx.transaction_hash}}">{{tx.transaction_hash}}</a></li>
-                    <li>Created: {{tx.updated_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.updated_at
-                        |
-                        timeAgo }})
-                    </li>
-                    <li>To: <a routerLink="/addr/{{tx.to_address}}">{{tx.to_address}}</a></li>
-                    <li>Value ({{addr.token_symbol}}): {{tx.value | weiToGO: false : true : addr.decimals | bigNumber}}</li>
-                  </ul>
-                </ng-container>
-                <ng-container *ifViewportSize="['large']">
-                  <div>
-                    <table>
-                      <thead>
-                      <tr>
-                        <th>Transaction hash</th>
-                        <th>Created at</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Value ({{addr.token_symbol}})</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr *ngFor="let tx of internal_transactions">
-                        <td><a routerLink="/tx/{{tx.transaction_hash}}">{{tx.transaction_hash}}</a></td>
-                        <td>{{tx.updated_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.updated_at | timeAgo }})</td>
-                        <td><a routerLink="/addr/{{tx.from_address}}">{{tx.from_address}}</a></td>
-                        <td><a routerLink="/addr/{{tx.to_address}}">{{tx.to_address}}</a></td>
-                        <td>{{tx.value | weiToGO: false : true : addr.decimals |
-                            bigNumber}}</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </ng-container>
-              </app-table>
-              <div>
-                <ng-template [appInfinityScroll]="internalTransactionScrollState"
-                             (onView)="onScroll('internalTransaction')">
-                  <app-loader></app-loader>
-                </ng-template>
-              </div>
-            </ng-container>
-            <ng-template #emptyInternal>
-              <div class="empty">No internal transactions</div>
-            </ng-template>
+          <ng-container *ngIf="internal_transactions.length; else emptyInternal">
+            <app-table>
+              <ng-container *ifViewportSize="['small']">
+                <ul *ngFor="let tx of internal_transactions">
+                  <li><a routerLink="/tx/{{tx.transaction_hash}}">{{tx.transaction_hash}}</a></li>
+                  <li>Created: {{tx.updated_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.updated_at
+                      |
+                      timeAgo }})
+                  </li>
+                  <li>To: <a routerLink="/addr/{{tx.to_address}}">{{tx.to_address}}</a></li>
+                  <li>Value ({{addr.token_symbol}}
+                    ): {{tx.value | weiToGO: false : true : addr.decimals | bigNumber}}</li>
+                </ul>
+              </ng-container>
+              <ng-container *ifViewportSize="['large']">
+                <div>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th>Transaction hash</th>
+                      <th>Created at</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Value ({{addr.token_symbol}})</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let tx of internal_transactions">
+                      <td><a routerLink="/tx/{{tx.transaction_hash}}">{{tx.transaction_hash}}</a></td>
+                      <td>{{tx.updated_at| date: 'dd/MM/yyyy HH:mm:ss'}} ({{tx.updated_at | timeAgo }})</td>
+                      <td><a routerLink="/addr/{{tx.from_address}}">{{tx.from_address}}</a></td>
+                      <td><a routerLink="/addr/{{tx.to_address}}">{{tx.to_address}}</a></td>
+                      <td>{{tx.value | weiToGO: false : true : addr.decimals |
+                          bigNumber}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ng-container>
+            </app-table>
+            <div>
+              <ng-template [appInfinityScroll]="internalTransactionScrollState"
+                           (onView)="onScroll('internalTransaction')">
+                <app-loader></app-loader>
+              </ng-template>
+            </div>
+          </ng-container>
+          <ng-template #emptyInternal>
+            <div class="empty">No internal transactions</div>
+          </ng-template>
         </tab-content>
       </tab>
       <tab *ngIf="addr.contract && addr.go20" name="holders">
@@ -204,49 +261,49 @@
           Holders
         </tab-title>
         <tab-content>
-            <ng-container *ngIf="token_holders.length; else emptyHolders">
-             <app-table>
-               <ng-container *ifViewportSize="['small']">
-                 <ul *ngFor="let holder of token_holders">
-                   <li>Token holder: <a
-                     routerLink="/addr/{{holder.token_holder_address}}">{{holder.token_holder_address}}</a>
-                   </li>
-                   <li>Balance ({{addr.token_symbol}}): {{holder.balance | weiToGO: false : true
-                       : addr.decimals | bigNumber}}
-                   </li>
-                 </ul>
-               </ng-container>
-               <ng-container *ifViewportSize="['large']">
-                 <div>
-                   <table style="table-layout: fixed;">
-                     <thead>
-                     <tr>
-                       <th>Token holder</th>
-                       <th>Balance ({{addr.token_symbol}})</th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     <tr *ngFor="let holder of token_holders">
-                       <td>
-                         <a routerLink="/addr/{{holder.token_holder_address}}">{{holder.token_holder_address}}</a>
-                       </td>
-                       <td>{{holder.balance | weiToGO: false : true : addr.decimals |
-                           bigNumber}}</td>
-                     </tr>
-                     </tbody>
-                   </table>
-                 </div>
-               </ng-container>
-             </app-table>
-              <div>
-                <ng-template [appInfinityScroll]="holderScrollState" (onView)="onScroll('holder')">
-                  <app-loader></app-loader>
-                </ng-template>
-              </div>
-            </ng-container>
-            <ng-template #emptyHolders>
-              <div class="empty">No holders</div>
-            </ng-template>
+          <ng-container *ngIf="token_holders.length; else emptyHolders">
+            <app-table>
+              <ng-container *ifViewportSize="['small']">
+                <ul *ngFor="let holder of token_holders">
+                  <li>Token holder: <a
+                    routerLink="/addr/{{holder.token_holder_address}}">{{holder.token_holder_address}}</a>
+                  </li>
+                  <li>Balance ({{addr.token_symbol}}): {{holder.balance | weiToGO: false : true
+                      : addr.decimals | bigNumber}}
+                  </li>
+                </ul>
+              </ng-container>
+              <ng-container *ifViewportSize="['large']">
+                <div>
+                  <table style="table-layout: fixed;">
+                    <thead>
+                    <tr>
+                      <th>Token holder</th>
+                      <th>Balance ({{addr.token_symbol}})</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let holder of token_holders">
+                      <td>
+                        <a routerLink="/addr/{{holder.token_holder_address}}">{{holder.token_holder_address}}</a>
+                      </td>
+                      <td>{{holder.balance | weiToGO: false : true : addr.decimals |
+                          bigNumber}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </ng-container>
+            </app-table>
+            <div>
+              <ng-template [appInfinityScroll]="holderScrollState" (onView)="onScroll('holder')">
+                <app-loader></app-loader>
+              </ng-template>
+            </div>
+          </ng-container>
+          <ng-template #emptyHolders>
+            <div class="empty">No holders</div>
+          </ng-template>
         </tab-content>
       </tab>
       <tab *ngIf="addr.contract" name="contract_source">
@@ -267,7 +324,8 @@
                 <p>Contract Name: {{contract.contract_name}}</p>
                 <p>Compiler Version: {{contract.compiler_version}}</p>
                 <p>Optimization: {{contract.optimization}}</p>
-                <p>Verified: {{contract.updated_at | date: 'dd/MM/yyyy HH:mm:ss'}} ({{contract.updated_at | timeAgo}})</p>
+                <p>Verified: {{contract.updated_at | date: 'dd/MM/yyyy HH:mm:ss'}} ({{contract.updated_at | timeAgo}}
+                  )</p>
                 <pre class="code">{{contract.source_code}}</pre>
               </ng-container>
               <h5><i>!!!</i> Contract Bytecode</h5>
