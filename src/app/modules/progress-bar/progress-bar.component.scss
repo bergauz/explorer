@@ -1,0 +1,14 @@
+$progressColor: #06a5ff;
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  div {
+    background: $progressColor;
+    height: 2px;
+  }
+}
