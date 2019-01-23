@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<div class="wallet-warning">
+<div class="wallet-warning" [ngClass]="{'show-banner' : !browserPrivateMode}">
   <p>Please use this wallet in <a
       href="https://support.google.com/chrome/answer/95464?co=GENIE.Platform%3DDesktop&hl=en"
       target="_blank">Chrome Incognito Mode</a> or <a

@@ -10,9 +10,15 @@
   align-items: center;
   justify-content: center;
   z-index: 3;
+  transition: .6s;
+  transform: translateY(110%);
 
   p {
     margin: 0;
     color: #fff !important;
   }
+}
+
+.show-banner {
+  transform: translateY(0);
 }
