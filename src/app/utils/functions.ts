@@ -1,6 +1,7 @@
 import {Subscription} from 'rxjs';
 
-declare const window: any;
+
+// declare const window: any;
 
 /**
  * clears array from subscriptions
@@ -22,46 +23,60 @@ export function objHas(obj: any, keys: string): boolean {
 /**
  *
  */
-export function isPrivateMode(): boolean {
-  const testLocalStorage = () => {
-    try {
-      if (localStorage.length) {
-        return true;
-      } else {
-        localStorage.x = 1;
-        localStorage.removeItem('x');
-        return true;
-      }
-    } catch (e) {
-      // Safari only enables cookie in private mode
-      // if cookie is disabled then all client side storage is disabled
-      // if all client side storage is disabled, then there is no point
-      // in using private mode
-      return !navigator.cookieEnabled;
-    }
-  };
-  // Chrome & Opera
-  if (window.webkitRequestFileSystem) {
-    return window.webkitRequestFileSystem(0, 0, true, false);
+
+/*export async function isPrivateMode() {
+  const firefoxBrowser = navigator.userAgent.search(/Firefox/);
+  const chromeBrowser = navigator.userAgent.search(/Chrome/);
+  const operaBrowser = navigator.userAgent.search(/OPR/);
+  const IEBrowser = navigator.userAgent.search(/NET/);
+  const requestFS = (<any>window).RequestFileSystem || (<any>window).webkitRequestFileSystem;
+
+  if (chromeBrowser > 0 || operaBrowser > 0 && requestFS) {
+    const prom = new Promise (resolve => {
+      requestFS((<any>window).TEMPORARY, 100, (fs) => {}, (err) => {
+        resolve(true);
+      });
+    });
+    const res = await prom;
+    return res;
   }
-  // Firefox
-  if ('MozAppearance' in document.documentElement.style) {
+
+  if (firefoxBrowser > 0) {
+    console.log('isFirefox');
     const db = indexedDB.open('test');
-    db.onerror = () => {
-      return true;
-    };
-    db.onsuccess = () => {
-      return false;
-    };
+    const prom = new Promise(resolve => {
+      db.onerror = () => {
+        resolve(true);
+      };
+    });
+    const res = await prom;
+    return res;
   }
-  // Safari
-  if (/constructor/i.test(window.HTMLElement)) {
-    return testLocalStorage();
-  }
-  // IE10+ & Edge
-  if (!window.indexedDB && (window.PointerEvent || window.MSPointerEvent)) {
-    return true;
+
+  if (IEBrowser > 0 && !window.indexedDB && ((<any>window).PointerEvent || (<any>window).MSPointerEvent)) {
+      const prom = new Promise(resolve => resolve(true));
+      const res = await prom;
+      return res;
   }
   // others
   return false;
+}*/
+/*let bool;
+export function isPrivateMode() {
+
+  const firefoxBrowser = navigator.userAgent.search(/Firefox/) > -1;
+  const chromeBrowser = navigator.userAgent.search(/Chrome/) > -1;
+  const operaBrowser = navigator.userAgent.search(/OPR/) > -1;
+  const IEBrowser = navigator.userAgent.search(/NET/) > -1;
+  const requestFS = (<any>window).RequestFileSystem || (<any>window).webkitRequestFileSystem;
+
+  if (chromeBrowser || operaBrowser && requestFS) {
+    requestFS((<any>window).TEMPORARY, 100, () => change(false), () => change(true));
+    return bool ? true : false;
+  }
 }
+
+function change(state: boolean) {
+  bool = state;
+  return bool;
+}*/
