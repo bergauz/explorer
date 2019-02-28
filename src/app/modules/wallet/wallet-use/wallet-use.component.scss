@@ -1,4 +1,98 @@
-.form-card {
-  max-width: 900px;
-  margin: 0 auto;
+@import "../../../../assets/styles/mixins";
+
+.wallet-use {
+  input, textarea, select {
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #fff;
+  }
+
+  select {
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+
+    option {
+      color: #fff;
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000 !important;
+  }
+
+  i.fas.fa-caret-down {
+    color: #02F48E !important;
+    margin-left: -20px;
+    position: relative;
+  }
+
+  .form-card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 900px;
+    margin: 0 auto;
+    z-index: 1;
+
+    h4 {
+      margin: 70px 0 50px;
+      font-weight: bold;
+      font-size: 36px;
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    h5 {
+      font-size: 18px;
+      color: #06A5FF !important;
+    }
+
+    &__content {
+      background: #fff;
+      box-shadow: 0 12px 35px rgba(11, 5, 35, 0.2);
+      padding: 40px 40px 1px;
+    }
+  }
+
+  .btn {
+    background: #06A5FF;
+    color: #fff;
+
+    &--light {
+      background: #172539;
+      color: #fff !important;
+    }
+  }
+}
+
+:host-context(body.dark) {
+  .wallet-use {
+    
+    label {
+      color: #fff !important;
+    }
+
+    input, textarea, select {
+      background: #141C28;
+      color: #fff
+    }
+    
+    .form-card {
+      h4 {
+        color: #fff;
+      }
+
+      h5 {
+        color: #02F48E !important;
+      }
+
+      &__content {
+        background: #1F314B;
+      }
+    }
+  }
 }

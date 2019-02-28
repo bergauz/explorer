@@ -1,17 +1,24 @@
+.wallet-main {
+  .card {
+    position: relative;
+    z-index: 1;
+  }
+}
+
 .wallet-menu {
   &__item {
-    background: #1F314B;
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(11, 5, 35, 0.2);
     padding: 20px;
     margin-right: 40px;
     cursor: pointer;
 
-    &:last-child {
-      margin-right: 0px;
+    &:hover {
+      background: darken(#fff, 3%);
     }
 
-    &:hover {
-      background: lighten(#1F314B, 15%);
+    &:last-child {
+      margin-right: 0;
     }
 
     .item {
@@ -24,12 +31,12 @@
       &__title {
         font-size: 24px;
         text-transform: uppercase;
-        color: #fff;
+        color: #000;
         margin-bottom: 20px;
       }
       &__description {
         font-weight: 300;
-        color: #fff;
+        color: #000;
         font-size: 14px;
       }
     }
@@ -62,4 +69,25 @@
   width: 900px;
   margin: 0 auto !important;
   display: block;
+}
+
+:host-context(body.dark) {
+  .wallet-menu {
+    &__item {
+      background: #1F314B;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: lighten(#1F314B, 15%);
+      }
+
+      &__title {
+        color: #fff;
+      }
+
+      &__description {
+        color: #fff;
+      }
+    }
+  }
 }

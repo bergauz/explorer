@@ -11,7 +11,6 @@ import {Account, TxSignature} from 'web3/eth/accounts';
 import {TransactionReceipt} from 'web3/types';
 /*SERVICES*/
 import {ToastrService} from '../toastr/toastr.service';
-/*MODELS*/
 
 @Injectable()
 export class WalletService {

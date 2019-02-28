@@ -2,6 +2,8 @@
 @import "./atomic";
 @import "./buttons";
 
+
+
 body, input[text], button {
   font-family: 'Roboto', Cambria, Georgia;
 }
@@ -35,7 +37,7 @@ body {
   overflow-y: scroll;
 
   &.dark {
-    background: #2d224d;
+    background: #0B0F15;
     *:not(a):not(input):not(select):not(option):not(textarea):not(.code):not(.switch__icon):not(b):not(button) {
       color: #eee !important;
     }
@@ -50,12 +52,12 @@ body {
     }
 
     .bg-gradient {
-      background-color: #140d28;
+      background-color: #0B0F15;
       color: #fff;
     }
 
     .uk-table-striped tbody tr:nth-of-type(odd), .uk-table-striped > tr:nth-of-type(odd) {
-      background: #3f2e79;
+      background: #141C27;
       border: none;
     }
 
@@ -74,11 +76,11 @@ body {
     }
 
     .list-holder {
-      background: #140d28;
+      background: #121C2B;
 
       &__footer {
-        background: #332563;
-        box-shadow: 0px 0px 45px rgba(31, 49, 75, 0.3);
+        background: #1F314B;
+        box-shadow: 0 0 45px rgba(31, 49, 75, 0.3);
 
         div {
           b {
@@ -166,6 +168,7 @@ body {
 }
 
 .code {
+  margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
   background-color: #f5f5f5;
@@ -326,7 +329,7 @@ body {
   background: #FDFDFD;
   max-width: 900px;
   margin: -80px auto 0;
-  box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
 
   a {
     text-decoration: underline;

@@ -5,12 +5,7 @@
 <app-mobile-menu *ifViewportSize="['small']"></app-mobile-menu>
 <div class="app-container" [ngClass]="{'app-container--loading': isPageLoading}">
   <div class="loader">
-    <div class="loader__content">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <app-loader></app-loader>
   </div>
   <div class="content">
     <router-outlet></router-outlet>

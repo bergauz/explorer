@@ -1,6 +1,8 @@
 .loader {
+  padding-top: 40vh;
   transition: opacity .8s ease-out;
   text-align: center;
+
   .loader__content {
     div {
       background: #151721;
@@ -36,3 +38,17 @@
     }
   }
 }
+
+@keyframes flash {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 0.5
+  }
+  100% {
+    opacity: 1.0
+  }
+}
+
+

@@ -1,0 +1,12 @@
+<div class="wallet-warning" *ngIf="toggleBanner">
+  <div class="wallet-warning__title">
+    <h4>warning</h4>
+    <i class="fas fa-times" (click)="toggleBanner = !toggleBanner"></i>
+  </div>
+  <p>Please use this wallet in <a
+      href="https://support.google.com/chrome/answer/95464?co=GENIE.Platform%3DDesktop&hl=en"
+      target="_blank">Chrome Incognito Mode</a> or <a
+      href="https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history" target="_blank">Firefox
+    Private Window</a>. This will disable
+    any extensions that could read your private key.</p>
+</div>

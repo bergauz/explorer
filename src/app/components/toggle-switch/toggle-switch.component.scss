@@ -71,7 +71,7 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
   -webkit-tap-highlight-color: transparent;
-  background-color: #06A5FF;
+  background: #E9E9E9;
 }
 
 .slider.round:before {
@@ -105,6 +105,6 @@ svg {
 
 :host-context(body.dark) {
   input:checked + .slider {
-    background-color: #7f00f6;
+    background-color: #06A5FF;
   }
 }

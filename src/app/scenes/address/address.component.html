@@ -63,7 +63,7 @@
       </ul>
     </div>
   </div>
-  <div class="p-b--60">
+  <div>
     <app-tabs name="addr_tab">
       <tab name="transactions" title="Transactions">
         <tab-content>
@@ -132,7 +132,7 @@
                 </table>
               </div>
             </ng-container>
-            <div class="p-b--40 p-t--40">
+            <div class="p-t--40">
               <app-pagination [total]="transactionQueryParams.totalPage"
                               (onSelect)="transactionQueryParams.toPage($event)"></app-pagination>
             </div>
@@ -190,7 +190,7 @@
                 </table>
               </div>
             </ng-container>
-            <div class="p-b--40 p-t--40">
+            <div class="p-t--40">
               <app-pagination [total]="internalTransactionQueryParams.totalPage"
                               (onSelect)="internalTransactionQueryParams.toPage($event)"></app-pagination>
             </div>
@@ -233,7 +233,7 @@
                 </table>
               </div>
             </ng-container>
-            <div class="p-b--40 p-t--40">
+            <div class="p-t--40">
               <app-pagination [total]="holderQueryParams.totalPage"
                               (onSelect)="holderQueryParams.toPage($event)"></app-pagination>
             </div>

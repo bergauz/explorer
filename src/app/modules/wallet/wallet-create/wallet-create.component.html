@@ -1,21 +1,24 @@
-<div class="wal f f-j--c">
-  <div class="card m-t--10">
-    <h3 class="center m-b--40 t--upp font-w--500">Account</h3>
-    <ng-container *ngIf="account; else error">
-      <p class="m-b--30">
-        NOTE: Once you leave this page, you cannot recover the address or private key.
-      </p>
-      <p>Please copy this somewhere safe!</p>
-      <p>Private Key</p>
-      <pre class="code">{{account.privateKey}}</pre>
-      <p>Address</p>
-      <pre class="code">{{account.address}}</pre>
-      <div class="center m-t--20">
-        <button routerLink="/wallet" class="btn btn--sm btn--round">Back</button>
-      </div>
-    </ng-container>
-    <ng-template #error>
-      <h3 class="center m-b--40 t--upp font-w--500">An error occurred while processing request. Please try again later.</h3>
-    </ng-template>
+<app-wallet-banner></app-wallet-banner>
+<div class="wallet-create">
+  <div class="card">
+    <h4 class="card__title t--upp font-w--500">Create wallet</h4>
+    <div class="card__content">
+      <ng-container *ngIf="account; else error">
+        <div class="card__note">
+          <p class="m-b--30">
+            NOTE: Once you leave this page, you cannot recover the address or private key.
+          </p>
+          <p>Please copy this somewhere safe!</p>
+        </div>
+        <p class="label">Private Key</p>
+        <pre class="code" (click)="onCopy(account.privateKey, $event)">{{account.privateKey}}</pre>
+        <p class="label">Address</p>
+        <pre class="code" (click)="onCopy(account.address, $event)">{{account.address}}</pre>
+      </ng-container>
+      <ng-template #error>
+        <h3 class="center m-b--40 t--upp font-w--500">An error occurred while processing request. Please try again later.</h3>
+      </ng-template>
+    </div>
+    <button routerLink="/wallet" type="button" class="btn btn--light">Back</button>
   </div>
 </div>

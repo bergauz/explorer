@@ -1,8 +1,105 @@
 @import "../../../../assets/styles/mixins";
 
+.wallet-send {
+  input, textarea, select {
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: none;
+    color: #000
+  }
+
+  select {
+    position: relative;
+    width: 200px;
+    cursor: pointer;
+    option {
+      color: #000;
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000 !important;
+  }
+
+  div i.fas.fa-caret-down {
+    color: #000 !important;
+    margin-left: -20px;
+    position: relative;
+  }
+
+  &__tabs-bg {
+    padding-bottom: 120px;
+  }
+
+  &__tabs {
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(11, 5, 35, 0.2);
+  }
+
+  .btn {
+    background: #06A5FF;
+    color: #fff;
+
+    &--light {
+      background: #172539;
+      color: #fff !important;
+    }
+  }
+
+  &__balance {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 35px;
+    background-color:#06A5FF;
+    border-radius: 100px;
+    position: absolute;
+    transform: translateY(50%);
+    
+    span {
+      color: #fff !important;
+    }
+  }
+
+  .bottom-form-block {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
+
+
+.card {
+  width: 900px;
+  padding: 0;
+  z-index: 1;
+
+  h4 {
+    margin: 70px 0 50px;
+    font-weight: bold;
+    font-size: 36px;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    padding: 50px 50px 20px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(11, 5, 35, 0.2);
+    position: relative;
+  }
+}
+
 .form-card {
   max-width: 900px;
+  min-height: 370px;
   margin: 0 auto;
+  padding: 40px;
 }
 
 .processing {
@@ -24,7 +121,7 @@
   background: #FDFDFD;
   max-width: 900px;
   margin: 0 auto 120px;
-  box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.1);
   padding: 30px;
 
   ul {
@@ -75,7 +172,49 @@
   }
 }
 
+div.form-card h5 {
+  color: #000 !important;
+  font-size: 18px;
+}
+
 :host-context(body.dark) {
+
+  div.form-card h5 {
+    color: #02F48E !important;
+  }
+
+  .wallet-send {
+    input, textarea, select {
+      background: #141C28;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      color: #fff
+    }
+
+    select {
+      option {
+        color: #fff;
+      }
+    }
+
+    label {
+      color: #fff !important;
+    }
+
+    &__tabs {
+      background: #1F314B;
+    }
+
+    &__balance {
+      background: #02F48E;
+    }
+  }
+
+  .card {
+    &__content {
+      background: #1F314B;
+    }
+  }
+
   .receipt {
     background: #140d28;
 

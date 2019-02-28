@@ -39,6 +39,7 @@
     font-size: 14px;
     line-height: 24px;
     background: #06A5FF;
+    box-shadow: 0 10px 25px rgba(108, 2, 244, 0.2);
     width: 60px;
     cursor: pointer;
 
@@ -56,17 +57,8 @@
 
 :host-context(body.dark) {
   .search {
-
-    button {
-      background: #7500f5;
-
-      &:hover {
-        background: lighten(#7500f5, 5%);
-      }
-    }
-
     input {
-      background: #2d224d;
+      background: #2A2D30;
       color: #fff;
       @include respond-to(small) {
         border-right: none;

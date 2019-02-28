@@ -1,0 +1,32 @@
+.page-404 {
+  color: #0B0F15;
+  max-width: 660px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 100px;
+
+  h1 {
+    font-size: 180px;
+    font-weight: bold;
+    color: #0B0F15;
+    text-shadow: 0 5px 15px rgba(11, 15, 21, 0.2);
+  }
+
+  h2 {
+    font-size: 50px;
+    margin-bottom: 70px;
+    color: #0B0F15;
+  }
+
+  button {
+    font-size: 14px;
+    margin-top: 70px;
+  }
+}
+
+:host-context(body.dark) {
+  div h1 {
+    color: #02F48E !important;
+    text-shadow: 0 5px 15px rgba(2, 244, 142, 0.2);
+  }
+}

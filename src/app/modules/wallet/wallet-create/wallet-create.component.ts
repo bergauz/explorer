@@ -5,7 +5,7 @@ import {Account} from 'web3/eth/accounts';
 @Component({
   selector: 'app-wallet-create',
   templateUrl: './wallet-create.component.html',
-  styleUrls: ['./wallet-create.component.css']
+  styleUrls: ['./wallet-create.component.scss']
 })
 export class WalletCreateComponent implements OnInit {
 
@@ -16,5 +16,11 @@ export class WalletCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.account = this._walletService.createAccount();
+  }
+
+  onCopy(content: string, event: any) {
+    (<any>navigator).clipboard.writeText(content);
+    (<any>event).target.classList = 'code animate';
+    setTimeout(() => (<any>event).target.classList = 'code', 400);
   }
 }

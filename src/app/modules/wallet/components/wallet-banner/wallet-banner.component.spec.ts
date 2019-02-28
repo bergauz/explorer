@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WalletBannerComponent } from './wallet.component';
+import { WalletBannerComponent } from './wallet-banner.component';
 import {WalletModule} from '../../wallet.module';
 import {AppModule} from '../../../../app.module';
 

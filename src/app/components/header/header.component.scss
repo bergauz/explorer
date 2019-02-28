@@ -71,13 +71,13 @@
 
       &:hover {
         div {
-          color: lighten(#7500f5, 25%) !important;
+          color: lighten(#06A5FF, 25%) !important;
         }
       }
 
       &--active {
-        background: #7500f5;
-        box-shadow: 0 5px 10px rgba(117, 0, 245, 0.2);
+        background: #06A5FF;
+        box-shadow: 0 5px 10px rgba(6, 165, 255, 0.2);
 
         &:hover {
           div {
